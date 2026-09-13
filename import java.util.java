@@ -1,43 +1,34 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Main {
+public class Inventario {
 
-    public static void main(String[] args) {
+    // Array tradicional
+    Producto[] productos = new Producto[3];
 
-        Scanner teclado = new Scanner(System.in);
+    // Lista dinámica
+    ArrayList<Producto> listaProductos = new ArrayList<>();
 
-        // Array tradicional de tamaño fijo
-        int[] numeros = new int[3];
+    public void agregarAlArray(Producto producto, int posicion) {
+        productos[posicion] = producto;
+    }
 
-        System.out.println("Ingrese 3 números para el Array:");
+    public void agregarALista(Producto producto) {
+        listaProductos.add(producto);
+    }
 
-        for (int i = 0; i < 3; i++) {
-            System.out.print("Número " + (i + 1) + ": ");
-            numeros[i] = teclado.nextInt();
+    public void mostrarArray() {
+        System.out.println("PRODUCTOS DEL ARRAY:");
+
+        for (int i = 0; i < productos.length; i++) {
+            productos[i].mostrarProducto();
         }
+    }
 
-        // ArrayList
-        ArrayList<Integer> lista = new ArrayList<>();
+    public void mostrarLista() {
+        System.out.println("\nPRODUCTOS DEL ARRAYLIST:");
 
-        System.out.println("\nIngrese otros 3 números para el ArrayList:");
-
-        for (int i = 0; i < 3; i++) {
-            System.out.print("Número " + (i + 1) + ": ");
-            lista.add(teclado.nextInt());
-        }
-
-        // Mostrar resultados
-        System.out.println("\n--- RESULTADOS ---");
-
-        System.out.println("Array tradicional:");
-        for (int i = 0; i < 3; i++) {
-            System.out.println(numeros[i]);
-        }
-
-        System.out.println("\nArrayList:");
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println(lista.get(i));
+        for (int i = 0; i < listaProductos.size(); i++) {
+            listaProductos.get(i).mostrarProducto();
         }
     }
 }
